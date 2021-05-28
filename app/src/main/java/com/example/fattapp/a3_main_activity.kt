@@ -38,6 +38,7 @@ class a3_main_activity : AppCompatActivity() {
         appBarConfiguration = AppBarConfiguration(setOf(
             R.id.nav_home,
             R.id.nav_gallery,
+            R.id.nav_userInfo,
             R.id.nav_slideshow,
             R.id.nav_login
         ), drawerLayout)
@@ -47,7 +48,7 @@ class a3_main_activity : AppCompatActivity() {
 
         var newUser =intent.getBooleanExtra(FLAG_ISNEWUSER, false)
         if(newUser){
-            navController.navigate(R.id.nav_gallery)
+            navController.navigate(R.id.nav_userInfo)
         }
     }
 

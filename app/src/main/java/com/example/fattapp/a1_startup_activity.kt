@@ -28,6 +28,7 @@ class a1_startup_activity : AppCompatActivity() {
 
         var intent:Intent = Intent(this, a3_main_activity::class.java)
         if(auth.currentUser == null) {intent = Intent(this, a2_login_activity::class.java)}
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         startActivity(intent)
     }
 }

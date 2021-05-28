@@ -27,6 +27,11 @@
         android:name="com.example.fattapp.a2_login_activity"
         android:label="a2_login_activity"
         tools:layout="@layout/a2_login_activity" />
+    <fragment
+        android:id="@+id/nav_userInfo"
+        android:name="com.example.fattapp.main_fragments.a34_userInfo"
+        android:label="a34_user_info_fragment"
+        tools:layout="@layout/a34_user_info_fragment" />
 </navigation>
 
     <!-- to add new Activity:
