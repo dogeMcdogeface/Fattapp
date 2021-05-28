@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "482358018227",
+    "project_id": "fattapp-7014c",
+    "storage_bucket": "fattapp-7014c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:482358018227:android:f2f2cbcb49378b45aff0c6",
+        "android_client_info": {
+          "package_name": "com.example.fattapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "482358018227-9tmaj6nhkgqvd9jafgfnpmge4pa5vfdn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbnp21njNxdxSdzDcZbMclKbyE5dfj6aQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "482358018227-9tmaj6nhkgqvd9jafgfnpmge4pa5vfdn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
