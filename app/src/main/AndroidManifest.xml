@@ -9,21 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Fattapp">
-        <activity android:name=".startup_activity">
+        <activity android:name=".a1_startup_activity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".login_activity">
+        <activity android:name=".a2_login_activity">
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".a3_main_activity"
             android:label="@string/app_name"
             android:theme="@style/Theme.Fattapp.NoActionBar">
             <intent-filter>

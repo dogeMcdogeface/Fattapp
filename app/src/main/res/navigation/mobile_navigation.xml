@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.fattapp.ui.home.HomeFragment"
+        android:name="com.example.fattapp.main_fragments.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/a3" />
 
     <fragment
         android:id="@+id/nav_gallery"
-        android:name="com.example.fattapp.ui.gallery.GalleryFragment"
+        android:name="com.example.fattapp.main_fragments.GalleryFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        tools:layout="@layout/a32_gallery_fragment" />
 
     <fragment
         android:id="@+id/nav_slideshow"
-        android:name="com.example.fattapp.ui.slideshow.SlideshowFragment"
+        android:name="com.example.fattapp.main_fragments.SlideshowFragment"
         android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/a33_slideshow_fragment" />
 </navigation>
