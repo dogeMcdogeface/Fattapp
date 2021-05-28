@@ -1,5 +1,6 @@
 package com.example.fattapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
@@ -27,8 +28,15 @@ class login_activity : AppCompatActivity() {
 
 
         auth.createUserWithEmailAndPassword("ass@ass.ass", "password").addOnCompleteListener(this) { task ->
-            if (task.isSuccessful) {}}
+            if (task.isSuccessful) {onLoginSuccess()}}
 
         Toast.makeText(applicationContext,"this is toast message",Toast.LENGTH_SHORT).show()
     }
+
+
+    fun onLoginSuccess(){
+        var intent: Intent = Intent(this, MainActivity::class.java)
+        startActivity(intent)
+    }
+
 }
