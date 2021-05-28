@@ -9,7 +9,7 @@
         android:id="@+id/nav_home"
         android:name="com.example.fattapp.main_fragments.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/a3" />
+        tools:layout="@layout/a31_home_fragment" />
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +22,14 @@
         android:name="com.example.fattapp.main_fragments.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/a33_slideshow_fragment" />
+    <activity
+        android:id="@+id/nav_login"
+        android:name="com.example.fattapp.a2_login_activity"
+        android:label="a2_login_activity"
+        tools:layout="@layout/a2_login_activity" />
 </navigation>
+
+    <!-- to add new Activity:
+                edit here
+                edit activity_main_drawer.xml
+                edit a3_main_activity.kt   -->
