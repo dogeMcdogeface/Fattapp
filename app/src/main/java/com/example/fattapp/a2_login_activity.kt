@@ -45,7 +45,7 @@ class a2_login_activity : AppCompatActivity() {
 
 
     fun bypass_button_pressed(v: View){
-        autenticate("ass@ass.ass", "password")
+        autenticate("a@a.aa", "a@a.aa")
     }
     fun switch_button_pressed(v: View){
         wantsNewUser = !wantsNewUser
@@ -77,7 +77,6 @@ class a2_login_activity : AppCompatActivity() {
 
     fun onLoginSuccess(task: Task<AuthResult>) {
         if(task.isSuccessful) {
-            currentUser.onLogin(auth.currentUser?.uid.toString())
             var intent: Intent = Intent(this, a3_main_activity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra(FLAG_ISNEWUSER , wantsNewUser)

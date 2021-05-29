@@ -67,6 +67,8 @@ class FirebaseHelper {
 }
 
 class CurrentUserHelper{
+    var r = auth.addAuthStateListener({onLogin()})
+
     var id = ""
     val mail: String?
         get() = auth.currentUser?.email
@@ -81,10 +83,10 @@ class CurrentUserHelper{
         reference = r
     }
 
-    fun onLogin(id: String) {
+    fun onLogin() {
+        id = auth.currentUser?.uid.toString()
         reference = firebaseHelper.trackUser(id)
         reference?.child("lastAccess")?.setValue(Now())
-        this.id = id
     }
 
     fun sendReport(wReport: weightReport) {

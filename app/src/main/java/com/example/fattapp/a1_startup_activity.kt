@@ -13,7 +13,7 @@ class a1_startup_activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.a1_startup_activity)
 
-        auth.signOut()
+        //auth.signOut()
 
         //check permissions
         //check firebase
