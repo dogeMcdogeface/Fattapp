@@ -1,13 +1,18 @@
 package com.example.fattapp
 
+import CurrentUserHelper
 import FLAG_ISNEWUSER
+import Now
 import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
+import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -15,12 +20,26 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import currentUser
+import firebaseHelper
+import kotlinx.android.synthetic.main.a30_main_activity.*
 
 
 class a3_main_activity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navController: NavController
+
+
+    fun updateLayout(){
+        val headerView : View = nav_view.getHeaderView(0)
+        val navUsername : TextView = headerView.findViewById(R.id.textName)
+        val navUserEmail : TextView = headerView.findViewById(R.id.textMail)
+        navUsername.text = currentUser.info?.name
+        navUserEmail.text = currentUser.mail
+
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +51,7 @@ class a3_main_activity : AppCompatActivity() {
 
         drawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
-        val navController = findNavController(R.id.nav_host_fragment)
+        navController = findNavController(R.id.nav_host_fragment)
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
@@ -45,11 +64,13 @@ class a3_main_activity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
         var newUser =intent.getBooleanExtra(FLAG_ISNEWUSER, false)
         if(newUser){
             navController.navigate(R.id.nav_userInfo)
         }
+
+        firebaseHelper.addUpdateListener {updateLayout()}
+        updateLayout()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -66,10 +87,12 @@ class a3_main_activity : AppCompatActivity() {
 
 
     override fun onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawers()
-        }else {
+        if(!drawerLayout.isDrawerOpen(GravityCompat.START)) {
             onSupportNavigateUp()
+        }else if(navController.currentDestination?.id != R.id.nav_home){
+            navController.navigate(R.id.nav_home)
+        }else{
+            drawerLayout.closeDrawers()
         }
     }
 }

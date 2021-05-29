@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import auth
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
+import currentUser
 import firebaseHelper
 import kotlinx.android.synthetic.main.a2_login_activity.*
 
@@ -76,7 +77,7 @@ class a2_login_activity : AppCompatActivity() {
 
     fun onLoginSuccess(task: Task<AuthResult>) {
         if(task.isSuccessful) {
-            firebaseHelper.userLoggedIn()
+            currentUser.onLogin(auth.currentUser?.uid.toString())
             var intent: Intent = Intent(this, a3_main_activity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             intent.putExtra(FLAG_ISNEWUSER , wantsNewUser)
