@@ -8,25 +8,37 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.fattapp.R
 import currentUser
-import weightReport
+import firebaseHelper
+import kotlinx.android.synthetic.main.a31_home_fragment.view.*
 
 class HomeFragment : Fragment() {
-
+    lateinit var root:View
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        val root = inflater.inflate(R.layout.`a31_home_fragment`, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        textView.text = "HOME!!"
+        root = inflater.inflate(R.layout.`a31_home_fragment`, container, false)
+        root.button.setOnClickListener { view -> button_pressed(view)}
 
-
-        var weight = weightReport(60.0)
-
-        currentUser.sendReport(weight)
-
+        firebaseHelper.addUpdateListener {updateLayout()}
         return root
+    }
+
+    fun updateLayout(){
+        var tmpW = currentUser.data?.weight?.today
+        if(tmpW != null && tmpW > 0) {
+            root.weight_field.setText("")
+            root.weight_field.setHint(tmpW.toString()+" (kg)")
+        }
+    }
+
+
+    fun button_pressed(v:View) {
+        var weight = root.weight_field.text.toString().toDoubleOrNull()
+        if (weight != null) {
+            currentUser.sendReport(weight)
+        }
     }
 }

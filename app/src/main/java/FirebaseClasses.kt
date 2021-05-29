@@ -24,7 +24,7 @@ var currentUser = CurrentUserHelper()
 class FirebaseHelper {
     //private var reports = HashMap<String, Report>()
     private var images = HashMap<String, Bitmap?>()
-    private var users = HashMap<String, User>()
+    private var users  = HashMap<String, User>()
     private var downloadTasks = HashMap<String, FileDownloadTask>()
     private var updateListeners = ArrayList<() -> Unit>()
 
@@ -77,11 +77,7 @@ class CurrentUserHelper{
 
     var data:User?
         get() {
-            var a = firebaseHelper.getUserById(id)
-            if(a!=null){
-                return a
-            }
-            return User()
+            return firebaseHelper.getUserById(id)
         }
         set(value) {reference?.setValue(value)}
 
@@ -97,7 +93,10 @@ class CurrentUserHelper{
         reference?.child("lastAccess")?.setValue(Now())
     }
 
-    fun sendReport(wReport: weightReport) {
-        reference?.child("wReport")?.setValue(wReport)
+    fun sendReport(wReport: Double) {
+
+        data?.weight?.last = wReport
+        reference?.setValue(data)
+        //reference?.child("wReport")?.setValue(wReport)
     }
 }
