@@ -25,7 +25,7 @@ class HomeFragment : Fragment() {
 
         var weight = weightReport(60.0)
 
-        //currentUser.sendReport(weight)
+        currentUser.sendReport(weight)
 
         return root
     }

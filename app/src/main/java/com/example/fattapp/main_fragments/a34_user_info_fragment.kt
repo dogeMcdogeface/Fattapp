@@ -5,12 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.fattapp.R
 import currentUser
-import kotlinx.android.synthetic.main.a34_user_info_fragment.*
 import kotlinx.android.synthetic.main.a34_user_info_fragment.view.*
 
 class a34_userInfo : Fragment() {
@@ -34,15 +32,13 @@ class a34_userInfo : Fragment() {
         var name    :String = root.name_field.text.toString()
         var height  :String = root.height_field.text.toString()
         var age     :String = root.age_field.text.toString()
-        var sex     :String = "M"
+        var sex     :String = ""
         if(root.sex_field.checkedRadioButtonId == R.id.radioButton_female){
             sex = "F"
+        }else if(root.sex_field.checkedRadioButtonId == R.id.radioButton_male){
+            sex = "M"
         }
-
-        var newInfo = User(name, height, age, sex)
-        currentUser.info = newInfo
+        currentUser.data = currentUser.data?.setData(name, age, height, sex)
         Toast.makeText(getActivity()?.getApplicationContext(),"Info saved",Toast.LENGTH_SHORT).show()
-
-
     }
 }

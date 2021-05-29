@@ -44,7 +44,7 @@ class FirebaseHelper {
     private val onUserUpdate: ValueEventListener =  object:ValueEventListener {
         override fun onDataChange(snapshot: DataSnapshot) {
             val id = snapshot.key
-            val newUser = snapshot.child("userInfo").getValue<User>()
+            val newUser = snapshot.getValue<User>()
             if(id != null && newUser != null) {
                 users[id] = newUser
                 onUpdate()
@@ -67,15 +67,23 @@ class FirebaseHelper {
 }
 
 class CurrentUserHelper{
-    var r = auth.addAuthStateListener({onLogin()})
+    init{
+        auth.addAuthStateListener({onLogin()})
+    }
 
     var id = ""
     val mail: String?
         get() = auth.currentUser?.email
 
-    var info:User?
-        get() {return firebaseHelper.getUserById(id)}
-        set(value) {reference?.child("userInfo")?.setValue(value)}
+    var data:User?
+        get() {
+            var a = firebaseHelper.getUserById(id)
+            if(a!=null){
+                return a
+            }
+            return User()
+        }
+        set(value) {reference?.setValue(value)}
 
 
     lateinit private var reference :DatabaseReference
@@ -83,7 +91,7 @@ class CurrentUserHelper{
         reference = r
     }
 
-    fun onLogin() {
+    private fun onLogin() {
         id = auth.currentUser?.uid.toString()
         reference = firebaseHelper.trackUser(id)
         reference?.child("lastAccess")?.setValue(Now())

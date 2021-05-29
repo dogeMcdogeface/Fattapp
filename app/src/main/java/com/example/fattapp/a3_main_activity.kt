@@ -1,9 +1,6 @@
 package com.example.fattapp
 
-import CurrentUserHelper
 import FLAG_ISNEWUSER
-import Now
-import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.View
@@ -36,7 +33,7 @@ class a3_main_activity : AppCompatActivity() {
         val headerView : View = nav_view.getHeaderView(0)
         val navUsername : TextView = headerView.findViewById(R.id.textName)
         val navUserEmail : TextView = headerView.findViewById(R.id.textMail)
-        navUsername.text = currentUser.info?.name
+        navUsername.text = currentUser.data?.name
         navUserEmail.text = currentUser.mail
 
     }
